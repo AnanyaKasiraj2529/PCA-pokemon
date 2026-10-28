@@ -18,11 +18,6 @@ def handle_transparency(image, background):
     background_image = Image.new("RGBA", image.size, (*background, 255))
     return Image.alpha_composite(background_image, image)
 
-def handle_transparency(image, background):
-    image = image.convert("RGBA")
-    background_image = Image.new("RGBA", image.size, (*background, 255))
-    return Image.alpha_composite(background_image, image)
-
 def pre_process_image(path, size, background):
     with Image.open(path) as image:
         image.load()
@@ -32,3 +27,7 @@ def pre_process_image(path, size, background):
     image = resize_image(image, size)
 
     return image
+
+'''Example:
+image = pre_process_image("pikachu.png", 64, (255, 255, 255))
+image.save("pikachu_processed.png") '''
